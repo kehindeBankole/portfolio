@@ -13,10 +13,10 @@ export default function Home() {
 
   const [done, setDone] = React.useState(false);
   React.useEffect(() => {
-cref.current.style.transform ='translateY(999deg)'
-console.log(cref.current.style)
+    cref.current.style.opacity = 0;
+    console.log(cref.current.style);
     let tl = anime.timeline({
-      duration:8000
+      duration: 8000,
     });
     anime({
       targets: ref.current,
@@ -30,16 +30,16 @@ console.log(cref.current.style)
         // cref.current.style.transition = "0.5s";
         // cref.current.style.opacity = "1";
         tl.add({
-          targets :svgref.current,
-        //  translateY: -999,
-        display:'none',
-          rotateY:180,
-          translateY:-999
-        })
-        tl.add({
-          targets:cref.current,
-          opacity:1
-        })
+          targets: svgref.current,
+          //  translateY: -999,
+          display: "none",
+          rotateY: 180,
+          translateY: -999,
+        });
+        anime.timeline({ duration: 10000 }).add({
+          targets: cref.current,
+          opacity: 1,
+        });
       },
     });
   }, []);
@@ -74,11 +74,8 @@ console.log(cref.current.style)
           target="_blank"
           rel="noopener noreferrer"
           ref={cref}
-          
         >
-          <span className={styles.log}>
-            ITS KEHINDE YO
-          </span>
+          <span className={styles.log}>ITS KEHINDE YO</span>
         </a>
       </main>
     </div>
