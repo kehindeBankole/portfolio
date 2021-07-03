@@ -10,20 +10,36 @@ export default function Home() {
   let ref = React.useRef();
   let svgref = React.useRef();
   let cref = React.useRef();
+
   const [done, setDone] = React.useState(false);
   React.useEffect(() => {
-    cref.current.style.opacity = "0";
+    cref.current.style.opacity = 0;
+    console.log(cref.current.style);
+    let tl = anime.timeline({
+      duration: 8000,
+    });
     anime({
       targets: ref.current,
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: "easeInOutSine",
-      duration: 5000,
+      duration: 3000,
       loop: false,
       complete: function () {
-        svgref.current.style.transition = "0.5s";
-        svgref.current.style.opacity = "0";
-        cref.current.style.transition = "0.5s";
-        cref.current.style.opacity = "1";
+        // svgref.current.style.transition = "0.5s";
+        // svgref.current.style.opacity = "0";
+        // cref.current.style.transition = "0.5s";
+        // cref.current.style.opacity = "1";
+        tl.add({
+          targets: svgref.current,
+          //  translateY: -999,
+          display: "none",
+          rotateY: 180,
+          translateY: -999,
+        });
+        anime.timeline({ duration: 10000 }).add({
+          targets: cref.current,
+          opacity: 1,
+        });
       },
     });
   }, []);
@@ -59,10 +75,7 @@ export default function Home() {
           rel="noopener noreferrer"
           ref={cref}
         >
-          Powered by{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
+          <span className={styles.log}>ITS KEHINDE YO</span>
         </a>
       </main>
     </div>

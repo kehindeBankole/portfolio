@@ -133,3 +133,6 @@
     stroke-dashoffset: 0;
   }
 } */
+.log{
+  transform: translate(-999) !important;
+}
