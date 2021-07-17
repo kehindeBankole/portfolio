@@ -51,7 +51,7 @@
   height: 100%;
   width: 100%;
 }
-.section1 {
+/* .section1 {
   background-color: red;
 }
 .co p {
@@ -64,4 +64,119 @@
 }
 .section3 {
   background-color: purple;
+} */
+.aboutandnav {
+  display: flex;
+  flex-direction: column;
+}
+.aboutandnav .image{
+  order:1;
+  width:100px;
+ align-self: center;
+ display: flex;
+}
+.aboutandnav .image .link{
+  margin-left:30px;
+  display: none;
+  align-items: center;
+  gap:30px;
+}
+.aboutandnav h2 {
+  color: white;
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  order:2
+}
+.aboutandnav p {
+  color: #777778;
+  text-align: center;
+  font-family: "Karla", sans-serif;
+  line-height: 1.7em;
+  text-transform: capitalize;
+  order:3;
+  margin-top:-15px
+}
+.aboutandnav .buttoncontainer {
+  display: flex;
+  justify-content: center;
+  order:4;
+  margin-top: 15px;
+}
+.aboutandnav .nav {
+  order:5;
+  background-color: transparent;
+}
+.aboutandnav .nav .navitem {
+  display:none;
+  gap:20px;
+}
+.aboutandnav .nav .navitem p{
+ order:1;
+}
+.aboutandnav .nav .navitem div{
+width:100px;
+height:2px;
+background-color:red;
+order: 2;
+}
+.aboutandnav .nav .navitem .data{
+  order:3;
+  text-transform:uppercase;
+ }
+ .aboutandnav .nav  button{
+   background-color:transparent;
+ } 
+.aboutandnav button {
+  background-color: #000000;
+  color: white;
+  border: 0;
+  padding: 0.6rem 2rem;
+  text-transform: capitalize;
+
+}
+.content {
+  display: none;
+}
+.contentarea {
+  display: flex;
+}
+@media (min-width: 1024px) {
+  .contentarea {
+    display: flex;
+    justify-content: space-between;
+  }
+  .aboutandnav {
+    flex: 1;
+  }
+  .aboutandnav p {
+   text-align: left;
+   line-height:2rem;
+  }
+  .aboutandnav h2 {
+   text-align: left;
+  }
+  .aboutandnav button {
+   display:none;
+  }
+  .aboutandnav .image .link{
+   display:flex;
+  }
+  .content {
+    display: block;
+    color: white;
+    flex: 1;
+  }
+  .aboutandnav h2 {
+    font-size: 52px;
+  }
+  .aboutandnav .image{
+    order:4;
+    align-self:flex-start;
+  }
+  .aboutandnav .nav .navitem {
+    display:flex;
+    gap:20px;
+  }
 }
