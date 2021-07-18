@@ -1,19 +1,16 @@
-import React from "react";
+import React ,{useState} from "react";
 import Head from "next/head";
-import Image from "next/image";
-import ReactFullpage from "@fullpage/react-fullpage";
 import styles from "../styles/Home.module.css";
 import { gsap } from "gsap";
-import Link from 'next/link'
 export default function Home() {
   let ref = React.useRef();
   let svgref = React.useRef();
   let cref = React.useRef();
   let dref = React.useRef();
-  const [done, setDone] = React.useState(false);
+  const [menu, setMenu] = useState("work");
+
   React.useEffect(() => {
     cref.current.style.opacity = 0;
-    console.log(cref.current.style);
     let tl = anime.timeline({
       duration: 8000,
     });
@@ -29,7 +26,6 @@ export default function Home() {
           targets: dref.current,
           rotateY: 180,
           opacity: 0,
-          //  translateY: -999,
         });
 
         anime.timeline({ duration: 10000 }).add({
@@ -82,27 +78,35 @@ export default function Home() {
             amazing people using technology. I enjoy tweaking stylesheets and
             crafting layouts to achieve desired aesthetics.
           </p>
-         <div className={styles.image}>
-         <img src="/bighead.svg" />
-         <div className={styles.link}>
-         <h3><a href="https://github.com/kehindeBankole" target="_blank">Github</a></h3>
-         <h3>styles</h3>
-         </div>
-         </div>
+          <div className={styles.image}>
+            <img src="/bighead.svg" />
+            <div className={styles.link}>
+              <h3>
+                <a href="https://github.com/kehindeBankole" target="_blank">
+                  Github
+                </a>
+              </h3>
+              <h3>styles</h3>
+            </div>
+          </div>
           <div className={styles.buttoncontainer}>
             <button>explore</button>
           </div>
           <div className={styles.nav}>
-            {['work', 'resume' , 'contact'].map((data , key) => (
-              <button className={styles.navitem}>
-              
-                <p>{'0' + key}</p><div></div><p className={styles.data}>{data}</p>
-               
-                </button>
-  ))}
+            {["work", "resume", "contact"].map((data, key) => (
+              <button type="button" className={styles.navitem} onClick={()=>{setMenu(data); console.log(data)}}>
+                <p>{"0" + key}</p>
+                <div></div>
+                <p className={styles.data}>{data}</p>
+              </button>
+            ))}
           </div>
         </section>
-        <section className={styles.content}>sss</section>
+        <section className={styles.content}>
+          {menu === "work" && "work"}
+          {menu === "resume" && "resume"}
+          {menu === "contact" && "contact"}
+        </section>
       </main>
     </div>
   );
